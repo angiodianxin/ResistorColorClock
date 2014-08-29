@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <script type="text/javascript">
+            var colors = [ "#000000", //0
+                           "#994C00", //1
+                           "#FF0000", //2
+                           "#FFB74C", //3
+                           "#FFD400", //4
+                           "#008000", //5
+                           "#0067C0", //6
+                           "#A757A8", //7
+                           "#808080", //8
+                           "#FFFFFF"  //9
+                         ];
+
+            function disp(){
+                date  = new Date();
+
+                hour  = date.getHours();
+                min   = date.getMinutes();
+                sec   = date.getSeconds();
+
+                hour0 = hour % 10;          //時 1の位
+                min0  = min  % 10;          //分 1の位
+                sec0  = sec  % 10;          //秒 1の位
+
+                hour1 = (hour - hour0) /10; //時10の位
+                min1  = (min  - min0 ) /10; //分10の位
+                sec1  = (sec  - sec0 ) /10; //秒10の位
+
+                document.getElementById("h1").style.color = colors[hour1];
+                document.getElementById("h0").style.color = colors[hour0];
+                document.getElementById("m1").style.color = colors[min1];
+                document.getElementById("m0").style.color = colors[min0];
+                document.getElementById("s1").style.color = colors[sec1];
+                document.getElementById("s0").style.color = colors[sec0];
+            }
+            setInterval("disp()",500);
+        </script>
+    </head>
+    <body>
+        <span class="clock">
+            <span id="h1">■</span>
+            <span id="h0">■</span>
+            :
+            <span id="m1">■</span>
+            <span id="m0">■</span>
+            :
+            <span id="s1">■</span>
+            <span id="s0">■</span>
+        </span>
+    </body>
+</span>
