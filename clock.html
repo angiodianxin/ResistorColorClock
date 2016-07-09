@@ -13,22 +13,17 @@
                            "#808080", //8
                            "#FFFFFF"  //9
                          ];
-
             function disp(){
                 date  = new Date();
-
                 hour  = date.getHours();
                 min   = date.getMinutes();
                 sec   = date.getSeconds();
-
-                hour0 = hour % 10;          //時 1の位
-                min0  = min  % 10;          //分 1の位
-                sec0  = sec  % 10;          //秒 1の位
-
-                hour1 = (hour - hour0) /10; //時10の位
-                min1  = (min  - min0 ) /10; //分10の位
-                sec1  = (sec  - sec0 ) /10; //秒10の位
-
+                hour0 = hour % 10;               //時 1の位
+                min0  = min  % 10;               //分 1の位
+                sec0  = sec  % 10;               //秒 1の位
+                hour1 = Math.floor( hour / 10 ); //時10の位
+                min1  = Math.floor( min  / 10 ); //分10の位
+                sec1  = Math.floor( sec  / 10 ); //秒10の位
                 document.getElementById("h1").style.color = colors[hour1];
                 document.getElementById("h0").style.color = colors[hour0];
                 document.getElementById("m1").style.color = colors[min1];
@@ -51,4 +46,4 @@
             <span id="s0">■</span>
         </span>
     </body>
-</span>
+</html>
