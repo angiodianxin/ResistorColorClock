@@ -5,3 +5,7 @@ coloclock
 
 いろいろと雑ですけど何でもしますから許してください。
 clock.htmlにjavascriptとフォーマットを両方詰めてあります。
+
+
+サンプル: 
+https://cdn.rawgit.com/81a3/coloclock/master/clock.html
