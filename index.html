@@ -1,49 +1,130 @@
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <script type="text/javascript">
-            var colors = [ "#000000", //0
-                           "#994C00", //1
-                           "#FF0000", //2
-                           "#FFB74C", //3
-                           "#FFD400", //4
-                           "#008000", //5
-                           "#0067C0", //6
-                           "#A757A8", //7
-                           "#808080", //8
-                           "#FFFFFF"  //9
-                         ];
-            function disp(){
-                date  = new Date();
-                hour  = date.getHours();
-                min   = date.getMinutes();
-                sec   = date.getSeconds();
-                hour0 = hour % 10;               //時 1の位
-                min0  = min  % 10;               //分 1の位
-                sec0  = sec  % 10;               //秒 1の位
-                hour1 = Math.floor( hour / 10 ); //時10の位
-                min1  = Math.floor( min  / 10 ); //分10の位
-                sec1  = Math.floor( sec  / 10 ); //秒10の位
-                document.getElementById("h1").style.color = colors[hour1];
-                document.getElementById("h0").style.color = colors[hour0];
-                document.getElementById("m1").style.color = colors[min1];
-                document.getElementById("m0").style.color = colors[min0];
-                document.getElementById("s1").style.color = colors[sec1];
-                document.getElementById("s0").style.color = colors[sec0];
-            }
-            setInterval("disp()",500);
-        </script>
-    </head>
-    <body>
-        <span class="clock">
-            <span id="h1">■</span>
-            <span id="h0">■</span>
-            :
-            <span id="m1">■</span>
-            <span id="m0">■</span>
-            :
-            <span id="s1">■</span>
-            <span id="s0">■</span>
-        </span>
-    </body>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .clock {
+            position: relative;
+            height: 4rem;
+            margin-top: 50vh;
+            transform: translateY(-50%);
+        }
+
+        .lead {
+            display: block;
+            position: absolute;
+            top: 43%;
+            bottom: 43%;
+            left: 0;
+            right: 0;
+            background: linear-gradient(#BDC3C9 0%, #FFFFFF 20%, #BDC3C9 100%);
+        }
+
+        .package {
+            display: -webkit-flex;
+            display: flex;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .clock-segment {
+            display: -webkit-flex;
+            display: flex;
+            background-color: #DEC3AB;
+        }
+
+        .clock-hour {
+            margin: unset;
+            padding-left: .8rem;
+            padding-right: .5rem;
+            border-radius: .8rem .5rem .5rem .8rem;
+        }
+
+        .clock-minute {
+            margin: .3rem -.1rem;
+            padding-left: .4rem;
+            padding-right: .4rem;
+            border: none;
+        }
+
+        .clock-second {
+            margin: unset;
+            padding-left: .5rem;
+            padding-right: .8rem;
+            border-radius: .5rem .8rem .8rem .5rem;
+        }
+
+        .clock-digit {
+            width: 1rem;
+        }
+
+        .clock-digit:first-of-type {
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="clock">
+        <div class="lead"></div>
+        <div class="package">
+            <div class="clock-segment clock-hour">
+                <div id="h1" class="clock-digit"></div>
+                <div id="h0" class="clock-digit"></div>
+            </div>
+            <div class="clock-segment clock-minute">
+                <div id="m1" class="clock-digit"></div>
+                <div id="m0" class="clock-digit"></div>
+            </div>
+            <div class="clock-segment clock-second">
+                <div id="s1" class="clock-digit"></div>
+                <div id="s0" class="clock-digit"></div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var colors = [
+            "#1C1C1C", //0
+            "#993711", //1
+            "#C7243A", //2
+            "#E47B12", //3
+            "#DAA908", //4
+            "#15882E", //5
+            "#1A68B1", //6
+            "#614F9B", //7
+            "#8E8E8E", //8
+            "#E3E3E3"  //9
+        ];
+        function loop() {
+            date = new Date();
+            hour = date.getHours();
+            min = date.getMinutes();
+            sec = date.getSeconds();
+            hour0 = hour % 10;              //時 1の位
+            min0 = min % 10;                //分 1の位
+            sec0 = sec % 10;                //秒 1の位
+            hour1 = Math.floor(hour / 10);  //時10の位
+            min1 = Math.floor(min / 10);    //分10の位
+            sec1 = Math.floor(sec / 10);    //秒10の位
+            document.getElementById("h1").style.backgroundColor = colors[hour1];
+            document.getElementById("h0").style.backgroundColor = colors[hour0];
+            document.getElementById("m1").style.backgroundColor = colors[min1];
+            document.getElementById("m0").style.backgroundColor = colors[min0];
+            document.getElementById("s1").style.backgroundColor = colors[sec1];
+            document.getElementById("s0").style.backgroundColor = colors[sec0];
+            requestAnimationFrame(loop);
+        }
+        loop();
+    </script>
+</body>
+
 </html>
